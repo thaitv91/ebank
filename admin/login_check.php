@@ -11,6 +11,7 @@ $sql = "select * from admin where username='".$username."' && password='".$passw
 $sql1=mysql_query($sql);
 $f_p = $_POST['forgetPassword'];
 $count = mysql_num_rows($sql1);
+
 if($count > 0)
 {	
 	$_SESSION['dennisn_admin_name']=$_REQUEST['username'];
@@ -23,9 +24,9 @@ if($count > 0)
 }
 else
 {
-	/*echo "<script type=\"text/javascript\">";
+	echo "<script type=\"text/javascript\">";
 	echo "window.location = \"login.php?err=d\"";
-	echo "</script>";*/
+	echo "</script>";
 }
 
 ?>
