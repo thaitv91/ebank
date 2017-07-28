@@ -1,0 +1,123 @@
+* {
+  -webkit-overflow-scrolling: touch;
+}
+.table-responsive{-webkit-overflow-scrolling: touch;}
+.skin-blue .main-header .navbar{background-color: #2394F2;}
+.skin-blue .main-header .logo{background-color: #0B7DDE}
+.main-header .logo img{padding: 7px 0;}
+.main-header .navbar .nav > li > a{ padding:8px 10px;}
+.main-header .navbar .nav > li, .main-header .navbar .nav > li:focus, .main-header .navbar .nav > li:active, .main-header .navbar .nav > li > a:hover, .main-header .navbar .nav > li > a:focus, .main-header .navbar .nav > li > a:active{ background: none !important;}
+.main-header .navbar .nav > li.messages-menu > a .fa{border-top:1px solid #50AAF6; border-left:1px solid #50AAF6; border-radius: 2px; background-color: #2494F2; padding: 7px; outline: 1px solid #1E7ECE;}
+.main-header .navbar .nav > li.messages-menu > a .fa:hover{background-color: #2898f6;box-shadow: 0px 1px 1px #1E7ECE;}
+.main-header .navbar .nav > li.messages-menu > a .label{background-color: #E44C34 !important; }
+.main-header .navbar-nav > .user-menu .user-image{height: 30px; width: 30px; margin-top:0;border-radius: 2px;}
+.main-header .navbar-nav > .user-menu a{line-height:30px;}
+#donationWrap #pdBtn.btn{
+	background: #1B84E2; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#2394F2, #2394F2); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#2394F2, #2394F2); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#2394F2, #2394F2); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#2394F2, #2394F2); /* Standard syntax */
+	padding: 19px 0;
+	transition:all 0.5s ease;
+	-moz-transition:all 0.5s ease;
+	-webkit-transition:all 0.5s ease;
+	-o-transition:all 0.5s ease;
+}
+#donationWrap #gdBtn.btn{
+	background: #A3C52A; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#2394F2, #2394F2); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#2394F2, #2394F2); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#2394F2, #2394F2); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#2394F2, #2394F2); /* Standard syntax */
+	border:1px solid #62792B; 
+	padding: 19px 0;
+	transition:all 0.5s ease;
+	-moz-transition:all 0.5s ease;
+	-webkit-transition:all 0.5s ease;
+	-o-transition:all 0.5s ease;
+}
+#donationWrap #pdBtn.btn:hover, #donationWrap #pdBtn.btn:active, #donationWrap #pdBtn.btn:focus{background-color:#2394F2;}
+#donationWrap #gdBtn.btn:hover, #donationWrap #gdBtn.btn:active, #donationWrap #gdBtn.btn:focus{background-color:#2394F2;}
+#donationWrap #pdBtn.btn span{
+	background:url(/images/newlayout/icons/pg_icon.png) no-repeat left  center transparent;
+	padding-left: 60px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+#donationWrap #gdBtn.btn span{
+	background:url(/images/newlayout/icons/gd_icon.png) no-repeat left  center transparent;
+	padding-left: 60px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+.bg-aqua{
+	background-color: #2394F2 !important;
+}
+.bg-yellow{
+	background-color: #2394F2 !important;
+}
+.bg-red{
+	background-color: #2394F2 !important;
+}
+.bg-aqua .inner, .bg-yellow .inner, .bg-red .inner{
+	text-align: right;
+}
+.small-box .icon{
+	font-size: 60px;
+	top: 0;
+}
+.small-box:hover .icon {
+	font-size: 70px;
+}
+.small-box h3{
+	font-weight: 600;
+}
+.small-box .icon{
+	left: 10px;
+}
+
+.banner-home{
+	margin-bottom: 15px;
+}
+.banner-home img{
+	width: 100%;
+}
+.news-list li{
+	margin: 15px 0;
+	font-size: 15px;
+	color: #767a7b;
+}
+.news-list li a{
+	font-weight: bold;
+	margin-bottom: 15px;
+}
+.news-list li .fa-stack{
+	float: left;
+	font-size: 38px;
+}
+.news-list li .news-date{
+	text-align: right;
+}
+
+.sidebar-menu > li{
+	border-bottom: 1px solid #191C23;
+	border-top: 1px solid #32353C;
+}
+.sidebar-menu > li > a > .fa{color:#fff !important}
+@media screen and (max-width: 1550px  ) and  (min-width: 1200px  ){
+	.news-list li .news-item{ padding-left: 40px;}
+
+}
+@media screen and (max-width: 768px) {
+	#donationWrap #gdBtn.btn, #donationWrap #pdBtn.btn{
+		margin-bottom: 15px;
+	}
+	.icon-admin{display: none;}
+	.news-list li .news-date{
+		text-align: left;
+	}
+
+}
+
+

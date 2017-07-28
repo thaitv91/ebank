@@ -1,0 +1,73 @@
+@font-face {
+    font-family: 'Avenir';
+    src: url('https://system.ebank.tv/font/fonts_email/Avenir-Roman.eot');
+    src: url('https://system.ebank.tv/font/fonts_email/Avenir-Roman.eot?#iefix') format('embedded-opentype'),
+    url('https://system.ebank.tv/font/fonts_email/Avenir-Roman.woff') format('woff'),
+    url('https://system.ebank.tv/font/fonts_email/Avenir-Roman.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Avenir';
+    src: url('https://system.ebank.tv/font/fonts_email/Avenir-Medium.eot');
+    src: url('https://system.ebank.tv/font/fonts_email/Avenir-Medium.eot?#iefix') format('embedded-opentype'),
+        url('https://system.ebank.tv/font/fonts_email/Avenir-Medium.woff') format('woff'),
+        url('https://system.ebank.tv/font/fonts_email/Avenir-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700&subset=latin,greek,vietnamese);
+a, img, .btn, .button, .job-item, .btn-register, .fa, .icon{transition:all 0.5s ease;-moz-transition:all 0.5s ease;-webkit-transition:all 0.5s ease;-o-transition:all 0.5s ease;}
+a{text-decoration:none;}
+a:hover, a:focus{text-decoration:none;}
+img{border:none;}
+body{background-color: #f5f5f5; font-weight: 300; font-size: 15px; line-height: 25px; color:#333333;width: 867px;margin: 0 auto; }
+
+.content{
+    width: 616px!important;
+    margin: 0 auto;
+    background-color: #fff;
+    font-family: 'Open Sans', sans-serif;
+}
+.img-logo{
+    padding: 50px 0;
+}
+.img-logo img{
+    margin: 0 auto;
+}
+.bg img{
+
+}
+.mail-content{
+    padding: 20px 30px;
+    color: #1b1b1b;
+}
+.mail-content h4{
+    color:#31c7ff;
+    padding-bottom: 15px;
+    font-weight: bold;
+}
+footer ul.icon{
+    text-align: center;
+    padding:30px 0 10px 0;
+}
+footer ul.menu-bot{
+    text-align: center;
+}
+footer p{
+    text-align: center;
+    color: #626262;
+}
+footer ul.menu-bot li{
+    border-right: 1px solid #626262;
+}
+footer ul.menu-bot li:last-child{
+    border-right: none;
+}
+footer ul.menu-bot a{
+    text-decoration: underline;
+    color: #626262;
+}
+footer ul.menu-bot a:hover{
+color:#31c7ff;
+}

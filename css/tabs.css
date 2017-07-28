@@ -1,0 +1,106 @@
+#page-wrap{ 
+	width: 870px; 
+	margin: 25px auto;
+	text-align:left; 
+	position:relative;
+	z-index:1;
+}
+.ui-tabs{zoom: 1; font-size:12px;}
+.ui-tabs .ui-tabs-nav{ 
+	list-style: none; 
+	position: relative;
+	padding: 2px 2px 0; 
+	overflow: hidden; 
+	top: 1px; 
+	z-index: 1000; 
+}
+.ui-tabs .ui-tabs-nav li{ 
+	position: relative;   border-radius:5px 5px 0 0;
+	float: left; 
+	font-weight:bold; 
+	border: 1px solid #ccc;
+	border-bottom-width: 0 !important; 
+	margin: 0 2px -1px 0; 
+	background: #ccc; 
+}
+.ui-tabs .ui-tabs-nav li #ship{ 
+	  border-radius:5px 5px 0 0;
+	font-weight:bold; 
+	border: 1px solid #ccc;
+	border-bottom-width: 0 !important; 
+	margin: 0 2px -1px 0; 
+	height:50px;
+	width:50px;;
+	background:url(../images/ship_c.png) no-repeat;
+}
+.ui-tabs .ui-tabs-nav li #pay{ 
+	  border-radius:5px 5px 0 0;
+	font-weight:bold; 
+	border: 1px solid #ccc;
+	border-bottom-width: 0 !important; 
+	margin: 0 2px -1px 0; 
+	height:50px;
+	width:50px;;
+	background:url(../images/pay_c.png) no-repeat;
+}
+.ui-tabs .ui-tabs-nav li a{ 
+	float: left; 
+	text-decoration: none; 
+	padding: 5px 10px; 
+	color: black; 
+}
+.ui-tabs .ui-tabs-nav 
+li.ui-tabs-selected #pay{ 
+	
+	border-bottom-width: 0; 
+	background:url(../images/pay_d.png) no-repeat;
+	border-radius:5px 5px 0 0;
+}
+.ui-tabs .ui-tabs-nav 
+li.ui-tabs-selected #ship{ 
+	
+	border-bottom-width: 0; 
+	background:url(../images/ship_d.png) no-repeat;
+	border-radius:5px 5px 0 0;
+}
+.ui-tabs .ui-tabs-nav 
+li.ui-tabs-selected a, .ui-tabs 
+.ui-tabs-nav li.ui-state-disabled a, 
+.ui-tabs .ui-tabs-nav 
+li.ui-state-processing a{ 
+	cursor: text; 
+}
+.ui-tabs .ui-tabs-nav li a, 
+.ui-tabs.ui-tabs-collapsible 
+.ui-tabs-nav li.ui-tabs-selected a{ cursor: pointer; } /* first selector in group seems obsolete, but required to overcome bug in Opera applying cursor: text overall if defined elsewhere... */
+.ui-tabs .ui-tabs-panel{ 
+	padding: 20px; 
+	display: block; 
+	border-width: 0; 
+	background: #fff; 
+	border: 1px solid #ccc; 
+	position: relative; 
+	min-height: 315px; 
+	padding-bottom:80px;
+}
+.ui-tabs .ui-tabs-hide{ display: none !important; }
+a.mover{ 
+	background: #900; 
+	padding: 6px 12px; 
+	position: absolute;
+	color: white; 
+	font-weight: bold; 
+	text-decoration: none; 
+}
+.next-tab{ 
+	bottom: 0; 
+	right: 0; 
+	-moz-border-radius-topleft: 10px; 
+	-webkit-border-top-left-radius: 10px; 
+}
+.prev-tab{ 
+	bottom: 0; 
+	left: 0; 
+	-moz-border-radius-topright: 10px; 
+	-webkit-border-top-right-radius: 10px; 
+}
