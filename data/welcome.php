@@ -345,6 +345,7 @@ if(isset($_REQUEST['buy_unit']))
                             inv_profit , date , time , mode , inc_days , rec_mode , priority)
                             values ('$user_id' , '$request_amount', '$plan_id' , '$plan_profit' ,
                             '$date_inv' , '$income_time' , 1 ,'$inv_days' , 1 , 1)";
+
                             $epin = implode(",",$epin_id);
                             $limit_update_epin = 1;
                             
@@ -368,11 +369,17 @@ if(isset($_REQUEST['buy_unit']))
                             $id_repd = $r_repd['id'];
                             mysql_query("UPDATE tb_repd SET pd_id = $id_repd , pd_time = '$time_now' WHERE id = $id_repd");
 
-                            mysql_query($sql);
+                            $work_invest = mysql_query($sql);
+                            if ($work_invest) {
+                                echo "<B style=\"color:#008000;\">Your PH request has been received. You will receive an email when it is processed. </B>";
+                            } else {
+                                echo "<B style=\"color:#FF0000;\">Send Fail!!!</B>";
+                            }
+
                             if($protected == 'on'){
                                 mysql_query("update users set protected='1' where id_user='$user_id'");
                             }
-                            echo "<B style=\"color:#008000;\">Your PH request has been received. You will receive an email when it is processed. </B>";
+                            
                         }
                         else
                         { echo "<B style=\"color:#FF0000;\">You have reached your maximum PH amount allowed for today. Please wait until tomorrow.</B>"; }

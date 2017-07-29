@@ -51,16 +51,17 @@ $rand = "PH".rand(11111,99999);
             $sqlk = "select t1.*,sum(t1.amount) as amt,t2.amount as inv_amt from income_transfer t1 left join investment_request t2 on t1.investment_id = t2.id where t1.paying_id = '$user_id' group by investment_id";
             $querss = mysql_query($sqlk);
             $num = mysql_num_rows($querss);
+
             if($num > 0)
             {
                 while($rrss = mysql_fetch_array($querss))
-                {
+                {   
                     $id_don = $rrss['id'];
                     $tot_amt = $rrss['amt'];
                     $invest_id = $rrss['investment_id'];
                     $date_don = $rrss['date'];
                     $mode_don = $rrss['mode'];
-                	$remain_amt = $rrss['inv_amt']-$rrss['amt'];
+                    $remain_amt = $rrss['inv_amt']-$rrss['amt'];
 
                     $date_dont = date('d - M - Y', strtotime($date_don));
 
@@ -113,202 +114,204 @@ $rand = "PH".rand(11111,99999);
                     if($status_tra !=  2){
                 ?>
                         <div class="overthrow">
-	          <div class="table-responsive">
-                            <table class="table table-bordered table-donate table-pd ">
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <div class="donate-header clearfix">
-                                                <i data-original-title="Click&nbsp;to&nbsp;hide" class="fa fa-chevron-up hireTable" rel="<?=$id_don;?>" value="pd" data-toggle="tooltip" data-placement="top" title=""></i>
-                                                <h4>Your PH ID: <span>PH069<?=$invest_id;?></span></h4>
-                                                <b>Participant</b>: <?=$username_you;?><br>
-                                                <b>Amount</b>: <?=number_format($tot_amt);?><br>
-                                                <!--<b>Remain Amount</b>: $  <?//=number_format($remain_amt);?><br>-->
-                                                <b>Date</b>: <?=$date_dont;?><br>
-                                                <b>Status</b>: <?=$status_don;?><br>
-                                                <?=$roi_time;?>
-                                                <a class="btn btn-info btn-print btn-sm glyphicon-right" href="#" >
-                                                    <i class="fa fa-print"></i> Print
-                                                </a>
-                                            </div>
-                                        <?php
-                                        $que = mysql_query("select * from income_transfer where paying_id = '$user_id' and investment_id = '$inv_id'");
-                                        $num_in = mysql_num_rows($que);
-                                        if($num_in > 0){
-                                            while($row = mysql_fetch_array($que)){
-                                                $jc++;
-                                                $pay_id = $row['user_id'];
-                                                $table_id = $row['id'];
-                                                $amount = $row['amount'];
-                                                $payment_receipt = $row['payment_receipt'];
-                                                $mode = $row['mode'];
-                                                $date_creat = $row['date'];
-                                                $time_link = $row['time_link'];
-                                                $date_creat = date('d/m/Y' , strtotime($date_creat));
-                                                $amount_usd = round($amount/$usd_value_current,2);
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-donate table-pd ">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="donate-header clearfix">
+                                                    <i data-original-title="Click&nbsp;to&nbsp;hide" class="fa fa-chevron-up hireTable" rel="<?=$id_don;?>" value="pd" data-toggle="tooltip" data-placement="top" title=""></i>
+                                                    <h4>Your PH ID: <span>PH069<?=$invest_id;?></span></h4>
+                                                    <b>Participant</b>: <?=$username_you;?><br>
+                                                    <b>Amount</b>: <?=number_format($tot_amt);?><br>
+                                                    <!--<b>Remain Amount</b>: $  <?//=number_format($remain_amt);?><br>-->
+                                                    <b>Date</b>: <?=$date_dont;?><br>
+                                                    <b>Status</b>: <?=$status_don;?><br>
+                                                    <?=$roi_time;?>
+                                                    <a class="btn btn-info btn-print btn-sm glyphicon-right" href="#" >
+                                                        <i class="fa fa-print"></i> Print
+                                                    </a>
+                                                </div>
+                                            <?php
+                                            $que = mysql_query("select * from income_transfer where paying_id = '$user_id' and investment_id = '$inv_id'");
+                                            $num_in = mysql_num_rows($que);
+                                            if($num_in > 0){
+                                                while($row = mysql_fetch_array($que)){
+                                                    $jc++;
+                                                    $pay_id = $row['user_id'];
+                                                    $table_id = $row['id'];
+                                                    $amount = $row['amount'];
+                                                    $payment_receipt = $row['payment_receipt'];
+                                                    $mode = $row['mode'];
+                                                    $date_creat = $row['date'];
+                                                    $time_link = $row['time_link'];
+                                                    $date_creat = date('d/m/Y' , strtotime($date_creat));
+                                                    $amount_usd = round($amount/$usd_value_current,2);
 
-                                                $receive_id = $row['paying_id'];
-                                                $tot_msg = get_tot_chat_message($receive_id);
+                                                    $receive_id = $row['paying_id'];
+                                                    $tot_msg = get_tot_chat_message($receive_id);
 
-                                                $manager = real_parent($pay_id);
-                                                $rec_mang_name = ucfirst(get_full_name($manager));
-                                                $rec_mang_phone = ucfirst(get_user_phone($manager));
+                                                    $manager = real_parent($pay_id);
+                                                    $rec_mang_name = ucfirst(get_full_name($manager));
+                                                    $rec_mang_phone = ucfirst(get_user_phone($manager));
 
-                                                if($mode == 0)
-                                                {
-                                                    $report_btn = '';
-                                                    $conf_btn = "<a href=\"#dialog-confirm-confirm\" data-toggle=\"modal\" src=\"?mdid=$table_id\" class=\"btn btn-default btn-sm\" id=\"show_confirm_box_$table_id\" data='{\"mdid\":$table_id}' style=\"background-color: #1dbb1d;\">Confirm</a>";
+                                                    if($mode == 0)
+                                                    {
+                                                        $report_btn = '';
+                                                        $conf_btn = "<a href=\"#dialog-confirm-confirm\" data-toggle=\"modal\" src=\"?mdid=$table_id\" class=\"btn btn-default btn-sm\" id=\"show_confirm_box_$table_id\" data='{\"mdid\":$table_id}' style=\"background-color: #1dbb1d;\">Confirm</a>";
 
-                                                    $imgs = "ellipsis-h"; $class = "pending";
-                                                    $rect_msg = "Awaiting your payment";
-                                                    $cnfirm_class = "orange";
-                                                    $chat_but = "<a href='#chat_box' onClick='OpenChatWindow($pay_id,chat,$receive_id)' role='button' class='btn btn-inverse btn-xs' data-toggle='chat_box'>Chat</a>";
+                                                        $imgs = "ellipsis-h"; $class = "pending";
+                                                        $rect_msg = "Awaiting your payment";
+                                                        $cnfirm_class = "orange";
+                                                        $chat_but = "<a href='#chat_box' onClick='OpenChatWindow($pay_id,chat,$receive_id)' role='button' class='btn btn-inverse btn-xs' data-toggle='chat_box'>Chat</a>";
 
-                                                }
-                                                elseif($mode == 2)
-                                                {
-                                                    $report_btn = '';
-                                                    $imgs = "check"; $class = "confirm";
-                                                    $rect_msg = "Payment approved";
-                                                    $cnfirm_class = "green";
-                                                }
-                                                else
-                                                {
-                                                    $conf_btn = '';
-                                                    $imgs = "ellipsis-h"; $class = "pending";
-                                                    $rect_msg = "Awaiting confirmation";
-                                                    $cnfirm_class = "red";
-                                                    $chat_but = "<a href='#chat_box' onClick='OpenChatWindow($pay_id,chat,$receive_id)' role='button' class='btn btn-inverse btn-xs' data-toggle='chat_box'>Chat</a>";
-                                                    $report_btn = "<a href=\"#dialog-report-confirm\" data-toggle=\"modal\" class=\"btn btn-danger btn-sm\" id=\"show_report_box_gd\" data=\"{&quot;mdid&quot;:&quot;".$row['id']."&quot;,&quot;uid&quot;:&quot;".$row['user_id']."&quot;,&quot;uir&quot;:&quot;".$row['paying_id']."&quot;,&quot;invest&quot;:&quot;".$row['investment_id']."&quot;}\">Report</a>";
-                                                }
-                                        ?>
-                                            <div style="display: block;" class="pd donate-body-<?=$id_don;?>">
-                                                <table class="table table-donations <?php if(check_user_report($pay_id) >0){ echo 'table-donations-report';}?>">
-                                                    <tbody>
-                                                    <tr class="title-pd">
-                                                        <td width="100px" class="donate-status pending">
-                                                            ID
-                                                        </td>
-                                                        <td>Create Date</td>
-                                                        <td>Sender</td>
-                                                        <td width="20" align="center"></td>
-                                                        <td>Amount</td>
-                                                        <td width="20" align="center"></td>
-                                                        <td>Receiver</td>
-                                                        <td class="<?php if($mode == 2){echo 'confirm';}else{echo 'pending';}?>" align="right">
-                                                            <span class="<?= $cnfirm_class; ?>"><i style="padding:1px 0; width:20px;" class="fa <?php if($mode == 2){echo 'fa-check';}else{echo 'fa-info';}?>"></i> <?= $rect_msg; ?></span>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="donate-status pending" width="100px">
-                                                            <span class="number">E06<?=$table_id;?></span>
-                                                        </td>
-                                                        <td>
-                                                            <span class="date"><?=$date_creat;?></span>
-                                                        </td>
-                                                        <td><span class="user">You</span></td>
-                                                        <td width="20" align="center">
-                                                            <i class="fa fa-chevron-right"></i>
-                                                        </td>
-                                                        <td width="120px">
-                                                            <span class="value money">  <?=number_format($amount);?></span>
-                                                        </td>
-                                                        <td width="20" align="center">
-                                                            <i class="fa fa-chevron-right"></i>
-                                                        </td>
-                                                        <td width="120px">
-                                                            <span class="user"><?=get_user_name($pay_id);?></span>
-                                                        </td>
-                                                        <td class="nowrap action-btn" align="right">
-                                                        <?php
-                                                        //kiểm tra user bị report
-                                                        $user_rep = check_user_report($pay_id);
-                                                        $user_rep_incom = check_user_report($receive_id);
-                                                        if( ($user_rep > 0) || ($user_rep_incom > 0) ){ echo '<p class="red text-left" style="font-size:15px;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>'.$alert_report[1].'  <a class="btn btn-warning btn-xs btn-details pull-right">Details</a></p>';}
-                                                        else{
-                                                        ?>
-                                                            <?=$conf_btn;?>
-                                                            <?=$report_btn;?>
-                                                            <a class="btn btn-warning btn-xs btn-details">Details</a>
-                                                            <?=$chat_but;?>
-                                                        <?php }?>
-                                                        </td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-                                                <div style="display: none;" class="transactionWrap">
-                                                    <div class="transaction-details">
-                                                        <table class="table table-condensed">
-                                                            <thead>
-                                                            <tr>
-                                                                <th colspan="2">
-                                                                    TRANSFER TO:
-                                                                </th>
-                                                            </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                            <tr>
+                                                    }
+                                                    elseif($mode == 2)
+                                                    {
+                                                        $report_btn = '';
+                                                        $imgs = "check"; $class = "confirm";
+                                                        $rect_msg = "Payment approved";
+                                                        $cnfirm_class = "green";
+                                                    }
+                                                    else
+                                                    {
+                                                        $conf_btn = '';
+                                                        $imgs = "ellipsis-h"; $class = "pending";
+                                                        $rect_msg = "Awaiting confirmation";
+                                                        $cnfirm_class = "red";
+                                                        $chat_but = "<a href='#chat_box' onClick='OpenChatWindow($pay_id,chat,$receive_id)' role='button' class='btn btn-inverse btn-xs' data-toggle='chat_box'>Chat</a>";
+                                                        $report_btn = "<a href=\"#dialog-report-confirm\" data-toggle=\"modal\" class=\"btn btn-danger btn-sm\" id=\"show_report_box_gd\" data=\"{&quot;mdid&quot;:&quot;".$row['id']."&quot;,&quot;uid&quot;:&quot;".$row['user_id']."&quot;,&quot;uir&quot;:&quot;".$row['paying_id']."&quot;,&quot;invest&quot;:&quot;".$row['investment_id']."&quot;}\">Report</a>";
+                                                    }
+                                            ?>
+                                                <div style="display: block;" class="pd donate-body-<?=$id_don;?>">
+                                                    <table class="table table-donations <?php if(check_user_report($pay_id) >0){ echo 'table-donations-report';}?>">
+                                                        <tbody>
+                                                        <tr class="title-pd">
+                                                            <td width="100px" class="donate-status pending">
+                                                                ID
+                                                            </td>
+                                                            <td>Create Date</td>
+                                                            <td>Sender</td>
+                                                            <td width="20" align="center"></td>
+                                                            <td>Amount</td>
+                                                            <td width="20" align="center"></td>
+                                                            <td>Receiver</td>
+                                                            <td class="<?php if($mode == 2){echo 'confirm';}else{echo 'pending';}?>" align="right">
+                                                                <span class="<?= $cnfirm_class; ?>"><i style="padding:1px 0; width:20px;" class="fa <?php if($mode == 2){echo 'fa-check';}else{echo 'fa-info';}?>"></i> <?= $rect_msg; ?></span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="donate-status pending" width="100px">
+                                                                <span class="number">E06<?=$table_id;?></span>
+                                                            </td>
+                                                            <td>
+                                                                <span class="date"><?=$date_creat;?></span>
+                                                            </td>
+                                                            <td><span class="user">You</span></td>
+                                                            <td width="20" align="center">
+                                                                <i class="fa fa-chevron-right"></i>
+                                                            </td>
+                                                            <td width="120px">
+                                                                <span class="value money">  <?=number_format($amount);?></span>
+                                                            </td>
+                                                            <td width="20" align="center">
+                                                                <i class="fa fa-chevron-right"></i>
+                                                            </td>
+                                                            <td width="120px">
+                                                                <span class="user"><?=get_user_name($pay_id);?></span>
+                                                            </td>
+                                                            <td class="nowrap action-btn" align="right">
                                                             <?php
-                                                            $q_user_income = mysql_query("SELECT * FROM users WHERE id_user = ".$row['user_id']." ");
-                                                            $r_user_income = mysql_fetch_array($q_user_income);
-                                                            $name_income = ucfirst($r_user_income['f_name']) . " " . ucfirst($r_user_income['l_name']);
+                                                            //kiểm tra user bị report
+                                                            $user_rep = check_user_report($pay_id);
+                                                            $user_rep_incom = check_user_report($receive_id);
+                                                            if( ($user_rep > 0) || ($user_rep_incom > 0) ){ echo '<p class="red text-left" style="font-size:15px;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>'.$alert_report[1].'  <a class="btn btn-warning btn-xs btn-details pull-right">Details</a></p>';}
+                                                            else{
                                                             ?>
-                                                                <td><b>Bank Account Holder Name</b></td>
-                                                                <td><?=$r_user_income['beneficiery_name'];?></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td><b>Bank Name</b></td>
-                                                                <td><?=$r_user_income['bank'];?></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td><b>Bank Branch Name</b></td>
-                                                                <td><?=$r_user_income['branch'];?></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td><b>Bank Account Number</b></td>
-                                                                <td><?=$r_user_income['ac_no'];?></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td colspan="2">
-                                                                    <ul class="contactList">
-                                                                        
-                                                                        <li>
-                                                                            Contact Receiver: <?=$name_income;?> - <?=$r_user_income['phone_no'];?>
-                                                                        </li>
-                                                                        <li>
-                                                                            Contact Receiver's Manager: <?=ucfirst(get_full_name($r_user_income['real_parent']))?> - <?=ucfirst(get_user_phone($r_user_income['real_parent']))?>
-                                                                        </li>
-                                                                        <li>
-                                                                            Contact Sender: <?=$you_name;?> -
-                                                                            <?=$you_phone;?>
-                                                                        </li>
-                                                                        <?php
-                                                                        $q_find_user_Sender = mysql_query("SELECT * FROM users WHERE id_user = ".$user_id." ");
-                                                                        $user_name_Sender = mysql_fetch_array($q_find_user_Sender);
-                                                                        ?>
-                                                                        <li>
-                                                                            Contact Sender's Manager: <?=ucfirst(get_full_name($user_name_Sender['real_parent']))?> - <?=ucfirst(get_user_phone($user_name_Sender['real_parent']))?>
-                                                                        </li>
-                                                                    </ul>
-                                                                </td>
-                                                            </tr>
-                                                            </tbody>
-                                                        </table>
+                                                                <?=$conf_btn;?>
+                                                                <?=$report_btn;?>
+                                                                <a class="btn btn-warning btn-xs btn-details">Details</a>
+                                                                <?=$chat_but;?>
+                                                            <?php }?>
+                                                            </td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <div style="display: none;" class="transactionWrap">
+                                                        <div class="transaction-details">
+                                                            <table class="table table-condensed">
+                                                                <thead>
+                                                                <tr>
+                                                                    <th colspan="2">
+                                                                        TRANSFER TO:
+                                                                    </th>
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                <tr>
+                                                                <?php
+                                                                $q_user_income = mysql_query("SELECT * FROM users WHERE id_user = ".$row['user_id']." ");
+                                                                $r_user_income = mysql_fetch_array($q_user_income);
+                                                                $name_income = ucfirst($r_user_income['f_name']) . " " . ucfirst($r_user_income['l_name']);
+                                                                ?>
+                                                                    <td><b>Bank Account Holder Name</b></td>
+                                                                    <td><?=$r_user_income['beneficiery_name'];?></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><b>Bank Name</b></td>
+                                                                    <td><?=$r_user_income['bank'];?></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><b>Bank Branch Name</b></td>
+                                                                    <td><?=$r_user_income['branch'];?></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><b>Bank Account Number</b></td>
+                                                                    <td><?=$r_user_income['ac_no'];?></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td colspan="2">
+                                                                        <ul class="contactList">
+                                                                            
+                                                                            <li>
+                                                                                Contact Receiver: <?=$name_income;?> - <?=$r_user_income['phone_no'];?>
+                                                                            </li>
+                                                                            <li>
+                                                                                Contact Receiver's Manager: <?=ucfirst(get_full_name($r_user_income['real_parent']))?> - <?=ucfirst(get_user_phone($r_user_income['real_parent']))?>
+                                                                            </li>
+                                                                            <li>
+                                                                                Contact Sender: <?=$you_name;?> -
+                                                                                <?=$you_phone;?>
+                                                                            </li>
+                                                                            <?php
+                                                                            $q_find_user_Sender = mysql_query("SELECT * FROM users WHERE id_user = ".$user_id." ");
+                                                                            $user_name_Sender = mysql_fetch_array($q_find_user_Sender);
+                                                                            ?>
+                                                                            <li>
+                                                                                Contact Sender's Manager: <?=ucfirst(get_full_name($user_name_Sender['real_parent']))?> - <?=ucfirst(get_user_phone($user_name_Sender['real_parent']))?>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </td>
+                                                                </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        <?php
+                                            <?php
+                                                }
                                             }
-                                        }
-                                        ?>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-	         </div>
+                                            ?>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                             </div>
                         </div>
                         <p></p>
                 <?php 
+                    } else {
+                        echo "<B style=\"color:#FF0000; font-size:14px;\">$there_are</B>";
                     }
                 }
             }
@@ -324,8 +327,8 @@ $rand = "PH".rand(11111,99999);
         $sqssl = "SELECT * from investment_request where user_id = $user_id ORDER BY id DESC";
         //$sqssl = "SELECT t1.*,sum(t2.amount) as amt FROM income_transfer t2 right join investment_request t1 on t2.investment_id = t1.id  WHERE t1.user_id = '$user_id' group by t2.investment_id";
 
-
         $query = mysql_query($sqssl);
+
         while($row = mysql_fetch_array($query))
         {
             $id = $row['id'];
@@ -385,6 +388,7 @@ $rand = "PH".rand(11111,99999);
             if($status_tra == 2){
                 $mesgs = "<span style=\"color:#F09D47;\">Completed</span>";
             }
+
             if($status_tra !=  2){
 
                 $date1=date_create($row['date']);
