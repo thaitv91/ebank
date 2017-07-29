@@ -2,23 +2,23 @@
 session_start();
 ini_set('display_errors','off');
 include("config.php");
-$lang = $_REQUEST['lang'];
+// $lang = $_REQUEST['lang'];
 
-if($lang == 'Spanish') {
-	unset($_SESSION['language']);
-	$_SESSION['language']  = 'language/sp.php'; 
-} elseif($lang == 'French') {
-	unset($_SESSION['language']);
-	$_SESSION['language']  = 'language/fr.php'; 
-} elseif($lang == 'English') {
-	unset($_SESSION['language']);
-	$_SESSION['language']  = 'language/en.php'; 
-}
+// if($lang == 'Spanish') {
+// 	unset($_SESSION['language']);
+// 	$_SESSION['language']  = 'language/sp.php'; 
+// } elseif($lang == 'French') {
+// 	unset($_SESSION['language']);
+// 	$_SESSION['language']  = 'language/fr.php'; 
+// } elseif($lang == 'English') {
+// 	unset($_SESSION['language']);
+// 	$_SESSION['language']  = 'language/en.php'; 
+// }
 
-if(!isset($_SESSION['language'])) {
-	$_SESSION['language'] = "language/en.php";
-}
-include $_SESSION['language'];
+// if(!isset($_SESSION['language'])) {
+// 	$_SESSION['language'] = "language/en.php";
+// }
+// include $_SESSION['language'];
 
 if($_SESSION['ebank_user_login'] != 1) {
 	include("login.php");
@@ -87,9 +87,9 @@ include("function/setting.php");
     max-width: none;
 }
 </style>
-<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<!-- <script src="http://code.jquery.com/jquery-1.9.1.js"></script> -->
 <script type="text/javascript" src="<?=$url_local;?>/js/print.js"></script>
-<!-- <script type="text/javascript" src="<?=$url_local;?>/js/jquery_002.js"></script> -->
+<script type="text/javascript" src="<?=$url_local;?>/js/jquery_002.js"></script>
 <script type="text/javascript" src="<?=$url_local;?>/js/bootstrap.js"></script>
 <script type="text/javascript" src="<?=$url_local;?>/js/remaining.js"></script>
 <script type="text/javascript" src="<?=$url_local;?>/js/fn_number_format.js"></script>
