@@ -310,8 +310,6 @@ $rand = "PH".rand(11111,99999);
                         </div>
                         <p></p>
                 <?php 
-                    } else {
-                        echo "<B style=\"color:#FF0000; font-size:14px;\">$there_are</B>";
                     }
                 }
             }
