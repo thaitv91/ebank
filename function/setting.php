@@ -2,7 +2,7 @@
 // select from setting table
 include 'account_maintain.php';
 
-$url_local = 'http://' . $_SERVER['HTTP_HOST'];
+$url_local = 'https://' . $_SERVER['HTTP_HOST'];
 $limit_ph = 4200000;
 
 $query = mysql_query("select * from setting ");

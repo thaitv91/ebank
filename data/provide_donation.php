@@ -328,7 +328,7 @@ $rand = "PH".rand(11111,99999);
         $query = mysql_query($sqssl);
 
         while($row = mysql_fetch_array($query))
-        {
+        {   
             $id = $row['id'];
             $paying_id = $row['paying_id'];
             $amount = $row['amount'];
@@ -453,77 +453,6 @@ $rand = "PH".rand(11111,99999);
         }}
     ?>
 </div>
-
-
-<!--<div class="col-md-3">
-    <?php
-        //$sqssl = "SELECT t1.* , t2.mode as int_mode FROM investment_request t1 left join income_transfer t2 on t1.id = t2.investment_id WHERE t1.user_id = '$user_id' ";
-        $sqssl = "SELECT *,sum(amount) as amt from income_transfer WHERE paying_id = '$user_id'
-        group by income_id ";
-        $query = mysql_query($sqssl);
-        while($row = mysql_fetch_array($query))
-        {
-            $id = $row['id'];
-            $paying_id = $row['user_id'];
-            $amount = $row['amt'];
-            $mode = $row['mode'];
-            $income_id = $row['income_id'];
-            $int_mode = $row['int_mode'];
-            $date = $row['date'];
-            $date = date('d-M-Y', strtotime($date));
-            $name = ucfirst(get_full_name($user_id));
-
-            /*if($mode == 1){ $mesgs = "<span style=\"color:#F09D47;\">Request processed</span>"; }
-
-            elseif($mode == 0 and $int_mode == 0)
-            {
-                $mesgs = "<span style=\"color:#FD0000;\">Request in Processing</span>";
-                $div_class = 'pending';
-            }
-
-            elseif($mode == 0 and $int_mode == 1)
-            { $mesgs = "<span style=\"color:#F09D47;\">Request Pending</span>"; $div_class = 'pending'; }
-
-            elseif($mode == 0 and $int_mode == 2)
-            {
-                $mesgs = "<span style=\"color:#008000;\">Request Confirmed</span>";
-                $div_class = 'confirm';
-            }*/
-            if($mode == 0)
-            {
-                $mesgs = "<span style=\"color:#FD0000;\">Being Processed</span>";
-                $div_class = 'pending';
-            }
-
-            elseif($mode == 1)
-            {
-                $mesgs = "<span style=\"color:#47FE03;\">Pending Completion</span>";
-                $div_class = 'pending';
-            }
-
-            elseif($mode == 2)
-            {
-                $mesgs = "<span style=\"color:#008000;\">Completed</span>";
-                $div_class = 'confirm';
-            }
-        ?>
-        <div class="widget donate-sidebar pdContainer-<?=$div_class;?>">
-        <div class="widget-body">
-            <div class="donateHead clearfix">
-                <span class="fa fa-arrow-right glyphicon-circle glyphicon-right"></span>
-                <div class="title">Provide Donation: <span><?=$rand.$income_id;?></span></div>
-            </div>
-            <b>Participant</b>:  <?=$name;?><br>
-            <b>Amount</b>: $  <?=number_format($amount);?><br>
-            <!--<b>Remain Amount</b>: $ 6,600,000<br>
-            <b>Date</b>: <?=$date;?><br>
-            <b>Status</b>: <?=$mesgs;?><!--<span class="pending">Pending</span>
-        </div>
-    </div>
-    <?php
-        }
-    ?>
-</div>-->
 <?php
 include 'box_confirm.php';
 include 'box_report.php';
