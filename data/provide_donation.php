@@ -434,9 +434,9 @@ $rand = "PH".rand(11111,99999);
                         $amount_received = 0;
 
                         if( $amount == 5000000){ 
-                            $amount_profit = 6400000;
+                            $amount_profit = 6600000;
                         }else { 
-                             $amount_profit = 3200000;
+                             $amount_profit = 3300000;
                         }
                         echo number_format($amount_profit);
                         ?>

@@ -30,7 +30,7 @@ $qur_set_search = '';
 if(isset($_POST['Excel']))
 {
 
-	$save_excel_file_path = "E:/server1/cdbv/business/admin/UserInfo/";
+	$save_excel_file_path = "/var/www/vwalletdev/admin/UserInfo/";
 	
 	$unique_name = "UserInformation".time();
 	$sep = "\t"; 
