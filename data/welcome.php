@@ -275,7 +275,7 @@ if($max_send_value == -1 ) {
 
 if(isset($_REQUEST['buy_unit']))
 {
-    if($max_pd_amt_settings[$level_vtype] >= $_POST['request_amount'] && $can_send == 1)
+    if($max_pd_amt_settings[$level_vtype] >= $_POST['request_amount'])
     {
         $request_amount = $_POST['request_amount'];
         $epin_cnt = $request_amount / $epin_value;
@@ -347,9 +347,9 @@ if(isset($_REQUEST['buy_unit']))
                             '$date_inv' , '$income_time' , 1 ,'$inv_days' , 1 , 1)";
 
                             $epin = implode(",",$epin_id);
-                            $limit_update_epin = 1;
+                            $limit_update_epin = 2;
                             
-                            if($_POST['request_amount'] == 500) {$limit_update_epin = 2;}
+                            if($_POST['request_amount'] == 250) {$limit_update_epin = 5;}
                             mysql_query("update e_pin set mode='0' where user_id='$user_id' and id in($epin) and mode=1 LIMIT $limit_update_epin");
 
                             // update sent_value
@@ -560,8 +560,8 @@ if(isset($_REQUEST['withdraw']))
                                     $quotient = (int)($max_pd_amt_settings[$level_user]/290);
                                 ?>
                                 <select class="form-control" id="pd_amount" name="request_amount">
-                                    <option value='250'>2,500,000</option>
-                                    <option value='500'>5,000,000</option>
+                                    <option value='<?php echo $package_one; ?>'><?php echo number_format($package_one*10000) ?></option>
+                                    <option value='<?php echo $package_two; ?>'><?php echo number_format($package_two*10000) ?></option>
                                     <?php 
                                     // for ($i=1; $i <= $quotient; $i++) { 
                                     //     $value = $i*250;
@@ -1048,11 +1048,7 @@ if(isset($_REQUEST['withdraw']))
                                 $limit_ph;
                                 $amount_received = 0;
 
-                                if( $amount == 5000000){ 
-                                    $amount_profit = 6600000;
-                                }else { 
-                                     $amount_profit = 3300000;
-                                }
+                                $amount_profit = $amount * $bonus_rank;
                                 echo number_format($amount_profit);
                                 ?>
                                 </b>

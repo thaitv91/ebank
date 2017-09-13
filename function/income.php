@@ -49,7 +49,7 @@ function get_speed_bonus($giver_id,$amount,$table_id,$date)
 		//$income = $amount * $speed_bonus_percent /100;
 		//$income = $amount * ($profit /100) * $date_income_fee;
 
-		$income = ($amount * (33 / 25)) - $amount;
+		$income = ($amount * $bonus_rank) - $amount;
 		//mysql_query("insert into user_income (user_id , income , date , type ) values ('$giver_id' , '$income' , '$date' , '".$income_type[8]."') ");
 		mysql_query("insert into user_income (user_id , income, income_id, investment_id , date , type ) 
 		values ('".$parent_sponsor."' , '$income', '".$row_investment_id['id']."', '".$row_investment_id['investment_id']."' , '".$time."' , '".$income_type[8]."') ");

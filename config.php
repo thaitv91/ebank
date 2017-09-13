@@ -10,6 +10,11 @@ $user_profile_folder = $path."/images/profile_image/";
 $idcard_folder = $path."/images/idcard_image/";
 $legal_docs_folder = $path."/images/legal/";
 
+// package
+$package_one = 150;
+$package_two = 250;
+$bonus_rank = 36/25;
+
 // investment Warning Meggage
 
 $admin_email_title = "";

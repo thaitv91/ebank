@@ -433,11 +433,7 @@ $rand = "PH".rand(11111,99999);
                         $limit_ph;
                         $amount_received = 0;
 
-                        if( $amount == 5000000){ 
-                            $amount_profit = 6600000;
-                        }else { 
-                             $amount_profit = 3300000;
-                        }
+                        $amount_profit = $amount * $bonus_rank;
                         echo number_format($amount_profit);
                         ?>
                         </b>
